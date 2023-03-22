@@ -694,7 +694,10 @@ export const ScheduleRepository = {
             {
                 where: {
                     date: data.date,
-                    start: tempStart
+                    start: tempStart,
+                    Rooms: {
+                        id: Not(room.id)
+                    }
                 }
             }
         )
