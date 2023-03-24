@@ -690,16 +690,13 @@ export const ScheduleRepository = {
         if (!room) throw new ErrorResponse(404, 18, 'La sala no existe')
 
         let tempStart = data.start.toString().substring(16, 24)
-        const validateSchedule = await getRepository(Schedule).findOne(
-            {
-                where: {
-                    //HARIM.
-                    date: data.date,
-                    start: tempStart,
-                    Rooms: Not(room)
-                }
+        const validateSchedule = await getRepository(Schedule).findOne({
+            where: {
+                date: data.date,
+                start: tempStart,
+                Rooms: Not({ id: room.id })
             }
-        )
+        })        
         if (validateSchedule) throw new ErrorResponse(404, 19, 'El horario ya esta ocupado-')
 
 
