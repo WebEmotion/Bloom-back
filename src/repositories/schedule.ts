@@ -693,7 +693,7 @@ export const ScheduleRepository = {
         const validateSchedule = await getRepository(Schedule).findOne(
             {
                 where: {
-                    //HARIM
+                    //HARIM.
                     Rooms: {
                         id: Not(room.id)
                     },
