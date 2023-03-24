@@ -693,16 +693,16 @@ export const ScheduleRepository = {
         const validateSchedule = await getRepository(Schedule).findOne(
             {
                 where: {
-                    date: data.date,
-                    start: tempStart,
                     //HARIM
                     Rooms: {
                         id: Not(room.id)
-                    }
+                    },
+                    date: data.date,
+                    start: tempStart,  
                 }
             }
         )
-        if (validateSchedule) throw new ErrorResponse(404, 19, 'El horario ya esta ocupado')
+        if (validateSchedule) throw new ErrorResponse(404, 19, 'El horario ya esta ocupado-')
 
 
 
