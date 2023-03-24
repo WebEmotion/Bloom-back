@@ -694,11 +694,9 @@ export const ScheduleRepository = {
             {
                 where: {
                     //HARIM.
-                    Rooms: {
-                        id: Not(room.id)
-                    },
                     date: data.date,
-                    start: tempStart,  
+                    start: tempStart,
+                    Rooms: Not(room)
                 }
             }
         )
